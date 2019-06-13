@@ -12,5 +12,10 @@ class Home extends TK_Controller {
 	{
 		$this->page('site/home');
 		$this->render();
+		
 	}
+
+	
 }
+
+
