@@ -1,0 +1,23 @@
+{
+  "name": "base-ci",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Phước Dưỡng <phuocduong.it@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "buildw": "NODE_ENV=production webpack webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build": "NODE_ENV=production webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "copy-concurrently": "^1.0.5",
+    "laravel-mix": "^4.0.15",
+    "resolve-url-loader": "2.3.2",
+    "sass": "^1.20.1",
+    "sass-loader": "7.*",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.31.0",
+    "webpack-obfuscator": "^0.18.0"
+  }
+}

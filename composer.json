@@ -1,0 +1,14 @@
+{
+	"description": "Base Codeigter - DSOLU VIETNAM",
+	"name": "dsolu/base-ci",
+	"type": "project",
+	"homepage": "https://dsolu.com",
+	"license": "MIT",
+	"require": {
+		"php": ">=7.1",
+		"rakit/validation": "^1.1"
+	},
+	"require-dev": {
+		
+	}
+}
