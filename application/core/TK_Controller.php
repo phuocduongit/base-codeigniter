@@ -49,15 +49,19 @@ class TK_Controller extends CI_Controller
         $this->data['description'] = $description;
     }
 
+    protected function content_view($content_view)
+    {
+        $this->data['content_view'] = $content_view;
+    }
+
     protected function render()
     {
-        $content_view = "";
         if (file_exists(VIEWPATH."dist/pages/".$this->data['page'].'.php'))
         {
             $content_view = $this->load->view("dist/pages/".$this->data['page'],$this->data,TRUE);
+            $this->data['content_view'] = $content_view;
         }
         $this->data['path_layout'] = 'dist/layouts/' . $this->data['layout'].'/';
-        $this->data['content_view'] = $content_view;
         $this->data['breadcrumbs'] = $this->breadcrumbs->get();
         $this->load->view('dist/layouts/' . $this->data['layout'].'/layout', $this->data);
     }

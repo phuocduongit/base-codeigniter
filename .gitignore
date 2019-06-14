@@ -4,3 +4,7 @@ assets/node_modules/
 vendor/
 
 assets/dist/
+
+application/config/config\.php
+
+application/config/database\.php
