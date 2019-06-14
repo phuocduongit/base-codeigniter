@@ -10,7 +10,8 @@ class Home extends TK_Controller {
 	
 	public function index()
 	{
-		$this->page('site/home');
+		// $this->page('site/home');
+		$this->content_view(base_url());
 		$this->render();
 		
 	}
