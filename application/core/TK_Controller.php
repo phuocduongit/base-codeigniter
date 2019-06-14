@@ -20,6 +20,7 @@ class TK_Controller extends CI_Controller
         $this->data['layout'] = "site";
         $this->data['page'] = "index";
         $this->data['title'] = "";
+        $this->data['content_view'] = "";
         $this->data['description'] = "";
     }
 
