@@ -305,6 +305,19 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
+	
+	
+
+	if(!file_exists(APPPATH.'config/config.php') || !file_exists(APPPATH.'config/database.php'))
+	{
+		if (strpos(strtolower($_SERVER['REQUEST_URI']), 'install') === false) {
+			copy(APPPATH.'config/config.example.php',APPPATH.'config/config.php');
+			header("Location: /install");
+			die();
+		}
+
+	}
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

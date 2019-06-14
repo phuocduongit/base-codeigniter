@@ -32,6 +32,9 @@ mix.js('src/app/app.js','dist/app/')
 mix.js('src/vendor/vendor.js','dist/vendor/')
     .sass('src/vendor/vendor.scss','dist/vendor/vendor.min.css');
 
+mix.js('src/install/install.js','dist/install/')
+    .sass('src/install/install.scss','dist/install/install.min.css');
+
 
 let arrayOfPath = [
     {
