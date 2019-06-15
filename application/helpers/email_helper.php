@@ -45,7 +45,7 @@ function sendMail($to = array(), $subject = "", $data = array(), $template = "de
     $CI->load->library('PHPMailer_Library');
     $mailer_lib = new PHPMailer_Library();
     $mail = $mailer_lib->getInstanceGmail();
-    //$mail->setFrom('support@bittrextool.com', 'Tính hiệu tradecoin');
+    $mail->setFrom('support@bittrextool.com', 'Tính hiệu tradecoin');
     $mail->isHTML(true);
 
     $mail->Subject = $subject;

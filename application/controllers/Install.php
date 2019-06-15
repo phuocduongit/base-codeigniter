@@ -45,8 +45,41 @@ class Install extends TK_Controller {
                 </div>
             "]);
         }
+
+        $this->run_config_db();
+        redirect('/');
         $this->page('/install/index');
         $this->render();
+    }
+
+    function run_config_db(){
+        try {
+            $dbExamplePath = APPPATH.'config/database.example.php';
+            $dbExampleFile = file_get_contents($dbExamplePath);
+            $data = array(
+                '_HOSTNAME_' =>'localhost',
+                '_USERNAME_' =>'develop',
+                '_PASSWORD_' =>'develop',
+                '_DATABASE_' =>'erp-oto',
+                '_DBPREFIX_' =>'erp',
+            );
+            $dbFile = template_parser($dbExampleFile,$data);
+    
+            $dbPath = APPPATH.'config/database.php';
+            
+            file_put_contents($dbPath, $dbFile);
+            $db_obj = $this->database->load('default',TRUE);
+            $connected = $db_obj->initialize();
+            if (!$connected) {
+                unlink($dbPath);
+                $this->api_res([],'connect DB error',true);
+            }else{
+                $this->api_res([],'connect DB Success',true);
+            }
+
+        } catch (\Throwable $th) {
+            $this->api_res($th,'error config DB',false);
+        }
     }
 }
 
