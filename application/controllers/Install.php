@@ -1,6 +1,4 @@
-
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Install extends TK_Controller {
 	function __construct(){
@@ -45,8 +43,39 @@ class Install extends TK_Controller {
                 </div>
             "]);
         }
+
+        $this->run_config_db();
         $this->page('/install/index');
         $this->render();
+    }
+
+    function run_config_db(){
+        try {
+            $dbExamplePath = APPPATH.'config/database.example.php';
+            $dbExampleFile = file_get_contents($dbExamplePath);
+            $data = array(
+                '_HOSTNAME_' =>'localhost',
+                '_USERNAME_' =>'develop',
+                '_PASSWORD_' =>'develop',
+                '_DATABASE_' =>'erp-oto',
+                '_DBPREFIX_' =>'erp',
+            );
+            $dbFile = template_parser($dbExampleFile,$data);
+    
+            $dbPath = APPPATH.'config/database.php';
+            
+            $db_obj = $this->load->database('',TRUE);
+            $connected = $db_obj->initialize();
+            if (!$connected) {
+                unlink($dbPath);
+                return FALSE;
+            }else{
+                return true;
+            }
+
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }
 
