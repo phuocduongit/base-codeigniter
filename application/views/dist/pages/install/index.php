@@ -10,7 +10,7 @@
                         <div class="step-title waves-effect waves-dark">Install Package</div>
                         <div class="step-new-content">
                             <div>
-                                <button class="btn btn-primary waves-effect waves-light" href="https://github.com/phuocduong/base-codeigniter" target="_blank" role="button">
+                                <button class="btn btn-primary waves-effect waves-light" >
                                     RUN Composer install
                                     <i class="fas fa-download ml-2"></i>
                                 </button>
