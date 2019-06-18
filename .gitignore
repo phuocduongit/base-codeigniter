@@ -1,10 +1,17 @@
 
 assets/node_modules/
 
-vendor/
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
 
-assets/dist/
-
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+/vendor/
 application/config/config\.php
-
 application/config/database\.php

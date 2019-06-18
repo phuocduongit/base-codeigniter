@@ -1,0 +1,291 @@
+@charset "UTF-8";
+
+body {
+  overflow: hidden;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: #fd397a !important;
+  padding-right: calc(1.5em + 1.3rem) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fd397…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center right calc(0.375em + 0.325rem) !important;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem) !important;
+}
+
+.kt-login.kt-login--v3 {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.kt-login.kt-login--v3 .kt-create__wrapper {
+  padding: 5% 2rem 1rem 2rem !important;
+}
+
+.kt-login.kt-login--v3 .kt-signin__wrapper {
+  padding: 2% 2rem 1rem 2rem !important;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper {
+  height: 100vh;
+  margin: 0 auto 2rem auto;
+  overflow: hidden;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container {
+  width: 470px;
+  margin: 0 auto;
+  padding: 50px 40px 40px;
+  background: #02011d;
+  box-shadow: 0 0 10px 0 #9d92ff;
+  border-radius: 40px;
+  max-width: 470px;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__logo {
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__logo img {
+  max-width: 390px;
+  width: 190px;
+  height: auto;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__head {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #ffd394;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__desc {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #ffd394;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form {
+  margin: 0 auto;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .input-group {
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control {
+  height: 50px;
+  padding: 0px 10px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #666666;
+  font-weight: 500;
+  border-bottom: 2px solid #1c1c1c !important;
+  border-radius: 0;
+  margin-top: 1.5rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control::-moz-placeholder {
+  color: #666666;
+  opacity: 1;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control:-ms-input-placeholder {
+  color: #666666;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control:focus {
+  border-color: #ffb864;
+  outline: none;
+  box-shadow: none;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control.is-valid + .valid-feedback {
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-left: 1.6rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .form-control.is-invalid + .invalid-feedback {
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-left: 1.6rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra {
+  margin: 0;
+  color: #a7abc3;
+  font-size: 1rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-checkbox {
+  font-size: 1rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-login__link {
+  font-size: 1.2rem;
+  color: #fff;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-login__link:hover {
+  color: #ffb864;
+  transition: color 0.3s ease;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions {
+  text-align: center;
+  margin: 56px 0 0;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-secondary {
+  margin-top: 5px;
+  height: 50px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-primary {
+  height: 53px;
+  border-radius: 50px;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #ffd394;
+  background: linear-gradient(to top, #070707, #202020);
+  box-shadow: none;
+  border-color: #262626;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-primary:hover {
+  box-shadow: none !important;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-primary:focus {
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 380px) {
+  .kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-primary {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 373px) {
+  .kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions #btn-create {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-forgot-pass {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-forgot-pass a {
+  color: #666666;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-forgot-pass a:hover {
+  color: #ffd394;
+}
+
+@media screen and (max-width: 425px) {
+  .kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-form .kt-forgot-pass {
+    margin-top: 40px;
+  }
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__account {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-msg {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #a7abc3;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6c7293;
+  transition: color 0.3s ease;
+}
+
+.kt-login.kt-login--v3 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-link:hover {
+  color: #5d78ff;
+  transition: color 0.3s ease;
+}
+
+.kt-login.kt-login--v3.kt-login--signin .kt-login__signup {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--signin .kt-login__signin {
+  display: block;
+}
+
+.kt-login.kt-login--v3.kt-login--signin .kt-login__forgot {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--signup .kt-login__signup {
+  display: block;
+}
+
+.kt-login.kt-login--v3.kt-login--signup .kt-login__signin {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--signup .kt-login__forgot {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--signup .kt-login__account {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--forgot .kt-login__signup {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--forgot .kt-login__signin {
+  display: none;
+}
+
+.kt-login.kt-login--v3.kt-login--forgot .kt-login__forgot {
+  display: block;
+}
+
+.error {
+  width: 100%;
+  margin-top: 0.25rem;
+  color: #dc3545;
+  padding: 0px 10px;
+}
+
