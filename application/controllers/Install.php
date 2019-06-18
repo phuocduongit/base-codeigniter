@@ -1,6 +1,4 @@
-
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Install extends TK_Controller {
 	function __construct(){
@@ -47,7 +45,6 @@ class Install extends TK_Controller {
         }
 
         $this->run_config_db();
-        redirect('/');
         $this->page('/install/index');
         $this->render();
     }
@@ -67,18 +64,17 @@ class Install extends TK_Controller {
     
             $dbPath = APPPATH.'config/database.php';
             
-            file_put_contents($dbPath, $dbFile);
-            $db_obj = $this->database->load('default',TRUE);
+            $db_obj = $this->load->database('',TRUE);
             $connected = $db_obj->initialize();
             if (!$connected) {
                 unlink($dbPath);
-                $this->api_res([],'connect DB error',true);
+                return FALSE;
             }else{
-                $this->api_res([],'connect DB Success',true);
+                return true;
             }
 
         } catch (\Throwable $th) {
-            $this->api_res($th,'error config DB',false);
+            return false;
         }
     }
 }

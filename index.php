@@ -312,6 +312,7 @@ switch (ENVIRONMENT)
 	{
 		if (strpos(strtolower($_SERVER['REQUEST_URI']), 'install') === false) {
 			copy(APPPATH.'config/config.example.php',APPPATH.'config/config.php');
+			copy(APPPATH.'config/database.example.php',APPPATH.'config/database.php');
 			header("Location: /install");
 			die();
 		}
