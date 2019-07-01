@@ -4,10 +4,211 @@ window.jQuery = window.$ = require('jquery');
 bsCustomFileInput = require('bs-custom-file-input')
 require('popper.js')
 require('bootstrap')
+require('jquery-validation')
 require('block-ui')
 require('mdbootstrap/js/mdb.min.js')
 require('../../vendor/mdb-pro/js/addons-pro/stepper');
 const Sticky = require('sticky-js');
+
+window.swal = require('sweetalert2')
+window.toastr = require('toastr')
+
+window.UploadKit = function() {
+    var dropArea;
+    var progressBar;
+    var mdata;
+    var rangeRender;
+    let uploadProgress = [];
+    var callBack;
+    var urlUpload;
+    var ismultiple;
+    var uploadInit = function() {
+  
+       // progressBar = document.getElementById('progress-bar');
+  
+        ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            // dropArea.addEventListener(eventName, preventDefaults, false)
+            [...dropArea].forEach(e=> e.addEventListener(eventName, preventDefaults, false))
+            document.body.addEventListener(eventName, preventDefaults, false)
+        })
+  
+        // Highlight drop area when item is dragged over it
+        ;['dragenter', 'dragover'].forEach(eventName => {
+            // dropArea.addEventListener(eventName, highlight, false)
+            [...dropArea].forEach(e => e.addEventListener(eventName,highlight,false))
+        })
+        ;['dragleave', 'drop'].forEach(eventName => {
+            // dropArea.addEventListener(eventName, unhighlight, false)
+            [...dropArea].forEach(e => e.addEventListener(eventName,unhighlight,false))
+        })
+  
+        $(dropArea).find('input').change((e) => {
+            // console.log('e',e.file);
+            rangeRender = $(e.target).closest('.wrap-drop-img')
+            handleFiles(e.target.files);
+        });
+  
+        // Handle dropped files
+        // dropArea.addEventListener('drop', handleDrop, false)
+        [...dropArea].forEach(e => e.addEventListener('drop',handleDrop,false))
+    }
+    function preventDefaults (e) {
+        e.preventDefault()
+        e.stopPropagation()
+    }
+  
+    function highlight(e) {
+        dropArea.addClass('highlight')
+    }
+  
+    function unhighlight(e) {
+        dropArea.removeClass('highlight')
+    }
+  
+  
+    function handleDrop(e) {
+        rangeRender = $(e.currentTarget)
+  
+        var dt = e.dataTransfer
+        var files = dt.files
+  
+        handleFiles(files)
+    }
+  
+    function initializeProgress(numFiles) {
+        progressBar.value = 0
+        uploadProgress = []
+  
+        for(let i = numFiles; i > 0; i--) {
+          uploadProgress.push(0)
+        }
+    }
+  
+    function updateProgress(progressBarItem , fileNumber, percent) {
+        uploadProgress[fileNumber] = percent
+        let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
+      console.debug('update',fileNumber,percent,total)
+      if(progressBarItem)
+        progressBarItem.set(percent);
+    }
+  
+    function handleFiles(files) {
+        files = [...files]
+        initializeProgress(files.length)
+        files.forEach(uploadFile)
+        files.forEach(previewFile)
+    }
+  
+    function previewFile(file) {
+        let reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = function () {
+  
+            let img = document.createElement('img')
+          img.src = reader.result;
+          if(!ismultiple)
+            rangeRender.find('.preview').html('').append(img)
+          else
+            rangeRender.find('.preview').append(img)
+  
+        //   preview.src =reader.result
+        }
+    }
+  
+    function uploadFile(file,i) {
+        let id = rangeRender.find('.preview').data('id');
+        var progressBarItem = progressBar[id];
+        //var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
+        var xhr = new XMLHttpRequest()
+        var formData = new FormData()
+        xhr.open('POST', urlUpload, true)
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+  
+        // Update progress (can be used to show progress indicator)
+        xhr.upload.addEventListener("progress", function(e) {
+          updateProgress(progressBarItem,i, (e.loaded * 100.0 / e.total) || 100)
+        })
+  
+        xhr.addEventListener('readystatechange', function(e) {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            updateProgress(progressBarItem,i,100) // <- Add this
+            try {
+              callBack(JSON.parse(e.currentTarget.response));
+            } catch (error) {
+              callBack(e.currentTarget.response);
+            }
+  
+          }
+          else if (xhr.readyState == 4 && xhr.status != 200) {
+            // Error. Inform the user
+          }
+        })
+  
+        formData.append('id',id)
+        formData.append('data', mdata)
+        formData.append('file', file)
+        xhr.send(formData)
+    }
+  
+    return {
+      init: function (upload,url,mcallBack,{data,multiple}= {data:"",multiple :false}) {
+        urlUpload = url;
+            ismultiple = multiple;
+            mdata = data;
+            callBack = mcallBack;
+            var startColor = '#007bff';
+            progressBar = [];
+            $(upload).find('.progress').each(function() {
+                var circle = new ProgressBar.Circle(this, {
+                    color: startColor,
+                    easing: 'linear',
+                    strokeWidth: 8,
+                    duration: 1500,
+                    text: {
+                        value: '0'
+                    }
+                });
+                let key = $(this).data('id');
+                progressBar[''+key] = circle;
+  
+                // var value = ($(this).attr('value') / 100);
+  
+                // circle.animate(value, {
+                //     from: {
+                //         color: startColor
+                //     },
+                //     to: {
+                //         color: endColor
+                //     },
+                //     step: function(state, circle, bar) {
+                //         circle.path.setAttribute('stroke', state.color);
+                //         console.log(circle);
+                //         circle.setText((circle.value() * 100).toFixed(0));
+                //     }
+                // });
+            });
+  
+            dropArea = $(upload).find('.drop-area');
+           // progressBar = $(upload).find('progress');
+            preview = $(upload).find('.preview');
+            uploadInit();
+  
+       },
+    };
+  }();
+
+window.showErrorMsg = function(form, type, msg) {
+    var alert = $('<div class="kt-alert kt-alert--outline alert alert-' + type + ' alert-dismissible" role="alert">\
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>\
+        <span></span>\
+    </div>');
+  
+    form.find('.alert').remove();
+    alert.prependTo(form);
+    //alert.animateClass('fadeIn animated');
+    KTUtil.animateClass(alert[0], 'fadeIn animated');
+    alert.find('span').html(msg);
+  }
 
 var KTUtil = function() {
 

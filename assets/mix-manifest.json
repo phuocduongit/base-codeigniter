@@ -1,10 +1,10 @@
 {
     "/dist/app/app.js": "/dist/app/app.js",
     "/dist/app/app.min.css": "/dist/app/app.min.css",
-    "/dist/vendor/vendor.min.css": "/dist/vendor/vendor.min.css",
     "/dist/install/install.min.css": "/dist/install/install.min.css",
     "/dist/page/guest/home/home.css": "/dist/page/guest/home/home.css",
     "/dist/install/install.js": "/dist/install/install.js",
     "/dist/page/guest/home/home.js": "/dist/page/guest/home/home.js",
-    "/dist/vendor/vendor.js": "/dist/vendor/vendor.js"
+    "/dist/vendor/vendor.js": "/dist/vendor/vendor.js",
+    "/dist/vendor/vendor.min.css": "/dist/vendor/vendor.min.css"
 }
