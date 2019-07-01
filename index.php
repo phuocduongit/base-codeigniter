@@ -310,9 +310,9 @@ switch (ENVIRONMENT)
 
 	if(!file_exists(APPPATH.'config/config.php') || !file_exists(APPPATH.'config/database.php'))
 	{
-		if (strpos(strtolower($_SERVER['REQUEST_URI']), 'install') === false) {
+		if (strpos(strtolower($_SERVER['REQUEST_URI']), 'install') === false  && strpos(strtolower($_SERVER['REQUEST_URI']), 'api') === false ) {
 			copy(APPPATH.'config/config.example.php',APPPATH.'config/config.php');
-			copy(APPPATH.'config/database.example.php',APPPATH.'config/database.php');
+			// copy(APPPATH.'config/database.example.php',APPPATH.'config/database.php');
 			header("Location: /install");
 			die();
 		}

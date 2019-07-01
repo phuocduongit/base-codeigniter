@@ -44,7 +44,7 @@ class Install extends TK_Controller {
             "]);
         }
 
-        $this->run_config_db();
+        // $this->run_config_db();
         $this->page('/install/index');
         $this->render();
     }
